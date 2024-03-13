@@ -11,3 +11,10 @@ def test_bot_token():
         raise ValueError("Missing environment variable: SLACK_BOT_TOKEN")
 
 print(sys.path)
+
+@pytest.fixture
+def mock_slack_client():
+    with patch("slackclient.SlackClient") as mock_client:
+        yield mock_client
+
+""" Test for successful history retrieval """
